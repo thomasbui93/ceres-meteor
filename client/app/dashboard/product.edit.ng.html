@@ -1,0 +1,204 @@
+<div>
+    <h4 class="text-capitalize">Edit Products</h4>
+    <form name="productForm" class="account-form" novalidate ng-submit="saveProduct()" ng-show="!upload.show">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="flat input-field">
+                    <label>Product</label>
+                    <input type="text" ng-model="product.name" placeholder="Name of product" name="name" required/>
+                    <div ng-show="productForm.$submitted || productForm.name.$touched" >
+                        <p ng-show="productForm.name.$error.required" class="text-danger">
+                            The product name is required
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h5 class="form-divider">Price Details:</h5>
+            <div class="col-md-3">
+                <div class="flat input-field">
+                    <label>Price</label>
+                    <input type="number" min="0" ng-model="product.price.main" placeholder="Price" name="price" required/>
+                    <div ng-show="productForm.$submitted || productForm.price.$touched" >
+                        <p ng-show="productForm.price.$error.required" class="text-danger">
+                            The product price is required
+                        </p>
+                        <p ng-show="productForm.price.$error.number" class="text-danger">
+                            The product price should be a number
+                        </p>
+                        <p ng-show="productForm.price.$error.min" class="text-danger">
+                            The product price should not be negative
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="flat input-field">
+                    <label>Currency</label>
+                    <input type="text" ng-model="product.price.currency" placeholder="Currency" name="currency" required/>
+                    <div ng-show="productForm.$submitted || productForm.currency.$touched" >
+                        <p ng-show="productForm.currency.$error.required" class="text-danger">
+                            The product price currency is required
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="flat input-field">
+                    <label>Unit</label>
+                    <input type="text" ng-model="product.price.unit" placeholder="Unit" name="unit" required/>
+                    <div ng-show="productForm.$submitted || productForm.unit.$touched" >
+                        <p ng-show="productForm.unit.$error.required" class="text-danger">
+                            The product unit is required
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h5 class="form-divider">Product Details:</h5>
+            <div class="col-md-12">
+                <div class="flat input-field">
+                    <label>Description</label>
+                    <textarea ng-model="product.detail.description" placeholder="Product Description" name="description" required>
+                    </textarea>
+                    <div ng-show="productForm.$submitted || productForm.description.$touched" >
+                        <p ng-show="productForm.description.$error.required" class="text-danger">
+                            The product description is required
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="flat input-field">
+                    <label>Origin</label>
+                    <input type="text" ng-model="product.detail.origin" placeholder="Origin" name="origin"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="flat input-field">
+                    <label>Category</label>
+                    <select ng-init="product.detail.category = categories[0]" ng-options="category.name for category in categories" ng-model="product.detail.category">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h5 class="form-divider">Shipping:</h5>
+            <div class="col-md-6">
+                <div class="flat input-field">
+                    <label>Available</label>
+                    <input type="text" ng-model="product.shipping.available" placeholder="Available" name="shippingAvailable"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <p class="text-firm">Free Shipping</p>
+                <div class="flat input-field">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" ng-check="product.shipping.free">
+                            <span class="lever"></span>
+                            On
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h5 class="form-divider">Stock:</h5>
+            <div class="col-md-3">
+                <div class="flat input-field">
+                    <label>Available</label>
+                    <input type="number"  min="0" ng-model="product.stock.available" placeholder="Available Stock" name="stockAvailable"/>
+                    <div ng-show="productForm.$submitted || productForm.stockAvailable.$touched" >
+                        <p ng-show="productForm.stockAvailable.$error.required" class="text-danger">
+                            The product price is required
+                        </p>
+                        <p ng-show="productForm.stockAvailable.$error.number" class="text-danger">
+                            The product price should be a number
+                        </p>
+                        <p ng-show="productForm.stockAvailable.$error.min" class="text-danger">
+                            The product price should not be negative
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <p class="text-firm">Infinite</p>
+                <div class="flat input-field">
+                    <div class="switch">
+                        <label>
+                            Off
+                            <input type="checkbox" ng-check="product.stock.infinite">
+                            <span class="lever"></span>
+                            On
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 pull-right">
+                <button class="btn btn-hollow" type="submit" >
+                    Save
+                </button>
+            </div>
+            <div class="col-md-3 pull-right">
+                <button class="btn btn-hollow" ng-click="rollback()" >
+                    Reset
+                </button>
+            </div>
+        </div>
+    </form>
+    <form class="account-form" ng-show="upload.show">
+        <div class="row">
+            <div class="col-md-12 center-block" >
+                <div class="center-block">
+                    <img ng-src="{{product.image[imgs.view]}}" width="300" height="300" class="center" broken-reload>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="thumbnail-products">
+               <li ng-repeat="img in product.image track by $index"
+                   ng-click="imgs.clickImage(img)"
+                   ng-class="{ 'selected': imgs.selectedIndexes.indexOf($index) > -1}">
+                   <img ng-src="{{img}}" width="50" height="50" broken-reload>
+               </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <input type="file"
+                       class="input-file"
+                       ng-model="product.image"
+                       onchange="angular.element(this).scope().uploadImage(event)"
+                       ng-disabled="imgs.selectedIndexes.length>1"
+                        />
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-hollow reverse small danger"
+                        ng-disabled="imgs.selectedIndexes.length===0"
+                        ng-click="removeImages()">
+                    Delete
+                </button>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-hollow reverse small"
+                        ng-disabled="imgs.selectedIndexes.length!==2"
+                        ng-click="swapImages()">
+                    Swap
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 pull-right">
+                <button class="btn btn-hollow" >
+                    Back To Products
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

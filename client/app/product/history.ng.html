@@ -1,0 +1,31 @@
+<h5 class="text-center theme-text">Comment History</h5>
+<ul class="comment-list media-list">
+    <li ng-repeat="history in commentInformation.history" class="media comment-input">
+        <div class="small-avatar media-left">
+            <img ng-src="{{commentInformation.owner.avatar}}">
+        </div>
+        <div class="media-body comment-main">
+            <div class="theme-text text-firm comment-header">
+                            <span class="location text-thin text-muted small pull-right">
+                                <i class="glyphicon glyphicon-globe"></i>
+                                {{commentInformation.owner.address.country}}
+                            </span>
+                <span ng-if="commentInformation.owner.status.client">{{commentInformation.owner.firstName+ ' '+ commentInformation.owner.lastName}}</span>
+                <span ng-if="!commentInformation.owner.status.client">{{commentInformation.owner.companyName}}</span>
+            </div>
+            <div class="comment-body">
+                <div ng-bind-html="history.msg">
+                </div>
+                <div class="comment-actions">
+                    <span class="text-muted small">
+                        <i class="glyphicon glyphicon-time"></i>
+                        {{history.createdTime | date: 'MMM dd hh:mm'}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="modal-actions">
+        <span class="btn reverse small btn-hollow" ng-click="close()">Close</span>
+    </li>
+</ul>

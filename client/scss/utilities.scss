@@ -1,0 +1,132 @@
+@import "color";
+@import "function";
+@import url(http://fonts.googleapis.com/css?family=Sacramento);
+.big-text{
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:5em;
+  text-transform: uppercase;
+  font-weight: 900;
+  @media screen and (max-width: 590px) {
+    font-size: 3em;
+  }
+  & >img{
+    height: 2em;
+  }
+}
+
+.medium-text{
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  @media screen and (max-width: 590px) {
+    font-size: 1.5em;
+  }
+  & >img{
+    height: 2em;
+  }
+}
+.text-firm{
+  font-weight: 500;
+}
+.first-big::first-letter {
+  font-size: 2em;
+  color: $theme;
+}
+.text-white{
+  color: white;
+}
+.theme-text{
+  color: $theme;
+}
+.text-cursive{
+  font-family: 'Sacramento', cursive;
+}
+.text-thin{
+  font-weight: 300;
+}
+.margin-bottom{
+  margin-bottom: 2em;
+}
+.margin-top{
+  margin-top: 100px;
+}
+.text-right{
+  text-align: right;
+}
+/* end typography */
+hr{
+  &.color{
+    border-color: $theme;
+  }
+  &.small{
+    width: 50%;
+  }
+}
+.nav-right{
+  position: absolute;
+  right:0;
+  @include vertical-center();
+  z-index: 30;
+  background-color: transparentize($theme, 0.1);
+  padding: 1em;
+  cursor: pointer;
+  & i{
+    color: white;
+  }
+}
+.nav-left{
+  position: absolute;
+  left: 0;
+  @include vertical-center();
+  z-index: 30;
+  background-color: transparentize($theme, 0.1);
+  padding: 1em;
+  cursor: pointer;
+  & i{
+    color: white;
+  }
+}
+
+.dotted-border{
+  position: relative;
+  border: 1px dotted transparentize($theme, 0.5);
+  width: 100%;
+  margin: 0.5em;
+}
+
+.icon-normal{
+  position: relative;
+  height: 2.5em;
+  background-color: transparentize(white, 0.8);
+  display: inline-block;
+  & img{
+    position: relative;
+    height: 2em;
+    width: 2em;
+    @include center();
+  }
+}
+.inline-block{
+  position: relative;
+  display: inline-block;
+}
+.inline-nav{
+  position: relative;
+  width: 100%;
+  height: 2em;
+  & li{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    & a{
+      position: relative;
+      height: 100%;
+    }
+  }
+}
+/* flat shadow */
+.shadow{
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}

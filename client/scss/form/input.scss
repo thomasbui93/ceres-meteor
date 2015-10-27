@@ -1,0 +1,125 @@
+@import "input";
+@import "../color";
+
+.login-container{
+  position: relative;
+  width: 500px;
+  display: block;
+  background: white;
+  padding: 1em;
+  margin-bottom: 1em;
+  @media screen and (max-width: 590px) {
+    width: 100%;
+  }
+}
+.register-container{
+  position: relative;
+  background: white;
+  margin-bottom: 2em;
+}
+.date-picker{
+  display:inline-block;
+  min-height:290px;
+  padding-left: 2em;
+  margin-top: 2em;
+  & .datepicker{
+    background: $background;
+    font-size: 1em;
+    & button{
+      border: none;
+      background-color: transparent;
+      font-size: 1em;
+      border-radius: 0;
+      &:hover{
+        color: $secondary;
+      }
+      &:active{
+        box-shadow: none;
+      }
+      &.btn-info{
+        color: $secondary;
+      }
+    }
+    & button[role="heading"]{
+      &:hover{
+        color: white;
+      }
+    }
+    & .text-info{
+      //color: white;
+    }
+    & thead{
+      background-color: $secondary;
+      color: white;
+      & button{
+        color: white;
+        &:active,&:focus{
+          background: transparent;
+          border: none;
+          outline: 0;
+          box-shadow: none;
+        }
+        &:hover{
+          color: white;
+        }
+      }
+    }
+    & tbody{
+      & button.active{
+        border: none;
+        border-radius:0 ;
+        background: $secondary;
+        color: white;
+        &:active, &:focus{
+          border: none;
+          outline: 0;
+          box-shadow: none;
+        }
+        &:focus{
+          background: $secondary;
+          color: white;
+        }
+      }
+
+    }
+  }
+}
+textarea{
+  overflow-y: hidden;
+  padding: 1.6rem 0;
+  resize: none;
+  min-height: 3rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  border-radius: 0;
+  outline: none;
+  width: 100%;
+  font-size: 1em;
+  margin: 0 0 15px 0;
+  padding: 0;
+  box-shadow: none;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  transition: all .3s;
+}
+.form-divider{
+  padding-left: 2em;
+  font-weight: bold;
+  color: $theme;
+}
+input[type=number].flat-input{
+  position: relative;
+  width: 5em;
+  padding: 1em;
+  border: none;
+  border-radius: 0;
+  height: 3em;
+  background-color: #f1f4f9;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  &:active, &:focus{
+    outline: 0;
+  }
+}

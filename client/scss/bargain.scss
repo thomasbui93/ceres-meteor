@@ -1,0 +1,68 @@
+@import "function";
+@import "color";
+.bargain-header{
+  position: relative;
+  width: 100vw;
+  height: 300px;
+  overflow: hidden;
+  & >img{
+    position: absolute;
+    width: 100vw;
+    min-height: 300px;
+    @include vertical-center();
+  }
+  & >.toolbar{
+    position: absolute;
+    bottom: 0;
+    background: $secondary;
+    width: 100vw;
+    height: 3em;
+    text-align: right;
+    & >li{
+      position: relative;
+      height: 3em;
+      color: white;
+      font-weight: 600;
+      text-align: center;
+      margin-right: 2em;
+      display: inline-block;
+      line-height: 3em;
+    }
+  }
+}
+.bargain-short{
+  position: relative;
+  min-width: 300px;
+  width: 100%;
+  background-color: white;
+  padding: 1em;
+  margin-bottom: 1em;
+  & .bargain-img{
+    position: relative;
+    width: 100%;
+    padding: 1em;
+    & img{
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    }
+  }
+  & .bargain-information{
+    position: relative;
+    width: 100%;
+    padding: 1em;
+  }
+  & .action-group{
+    position: relative;
+    width: 100%;
+    padding: 1em;
+  }
+}
+.bargain-brief{
+  position: relative;
+  margin-bottom: 1em;
+  padding: 1em;
+  background-color: $background;
+  & img{
+    position: relative;
+    @include horizontal-center();
+  }
+}

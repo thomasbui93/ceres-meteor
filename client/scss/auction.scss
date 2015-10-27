@@ -1,0 +1,134 @@
+@import "color";
+@import "function";
+.bidding-section{
+  position: relative;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+  background: white;
+  padding: 0.5em;
+  display: block;
+  margin-top: 1em;
+  & > .bidding-box{
+    position: relative;
+    width: 100%;
+    height: auto;
+    & input {
+      position: relative;
+      float: left;
+      height: 3em;
+      padding: 1em;
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      &:focus, &:active{
+        outline: 0;
+      }
+    }
+    & .auction-btn{
+      position: relative;
+      border: none;
+      border-radius: 0;
+      background-color: $theme;
+      height: 3em;
+      font-weight: 500;
+      color: white;
+      text-transform: uppercase;
+      &:active, &:focus{
+        outline: 0;
+      }
+    }
+  }
+  & .bidding-information{
+    position: relative;
+    width: 100%;
+    background: transparentize($background, 0.5);
+    height: 1.5em;
+    padding-left: 1em;
+    line-height: 1.5em;
+    margin-top: 0.5em;
+  }
+}
+.time-remain{
+  position: relative;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  & img{
+    position: relative;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    margin-right: 2em;
+    display: inline-block;
+  }
+  & div{
+    position: relative;
+    height: 100%;
+    line-height: 30px;
+    display: inline-block;
+    font-size: 1.5em;
+  }
+}
+.countdown-container{
+  position: relative;
+  width: 100%;
+  height: 10em;
+
+}
+.countdown{
+ position: relative;
+ width: 100%;
+ height: 90%;
+ top: 0;
+ display: block;
+  text-align: center;
+  & > li{
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    padding:0;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    width: 8em;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    background: white;
+    & .countdown-time{
+      position: relative;
+      width: 100%;
+      height: 80%;
+      text-align: center;
+      font-size: 5em;
+      font-weight: 300;
+    }
+    & .countdown-label{
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      height: 20%;
+      background-color: $danger;
+      text-transform: uppercase;
+      font-size: 1.2em;
+      font-weight: 400;
+      color: white;
+    }
+  }
+}
+@media screen and (max-width: 590px) {
+  .countdown-container{
+    height: 5em;
+  }
+  .countdown{
+    & > li{
+      width: 3em;
+      & .countdown-time{
+        font-size: 2em;
+        font-weight: 300;
+      }
+      & .countdown-label{
+        font-size: 0.6em;
+        font-weight: 400;
+      }
+    }
+  }
+}

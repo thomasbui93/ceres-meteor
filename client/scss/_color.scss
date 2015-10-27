@@ -1,0 +1,15 @@
+$theme: #4CAF50;
+$secondary:#7C4DFF;
+$background: #EEEEEE;
+$warning: #FFC107;
+$danger: #F44336;
+
+$switch-bg-color: $theme !default;
+$switch-checked-lever-bg: desaturate(lighten($theme, 25%), 25%) !default;
+$switch-unchecked-bg: #F1F1F1 !default;
+$switch-unchecked-lever-bg: #818181 !default;
+$input-disabled-color: rgba(0,0,0, .26) !default;
+$input-disabled-solid-color: #BDBDBD !default;
+
+$radio-fill-color: $theme !default;
+$radio-empty-color: #5a5a5a !default;

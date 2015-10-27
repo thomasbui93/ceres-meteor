@@ -1,0 +1,56 @@
+<div class="account-form">
+    <div class="row">
+        <h6 ng-if="auctions.length===0" class="text-center">You currently do not own any product's auctions line.
+            <a ui-sref="dashboard.product.compose" class="normal-link">Create one</a></h6>
+    </div>
+    <div class="row auction-detail" ng-repeat="auction in auctions track by $index">
+        <div class="col-md-4">
+            <div class="auction-image">
+                <img ng-src="{{auction.image[0]}}">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h4>{{auction.name}}</h4>
+            <h5 class="text-primary">
+                 <span class="location h5 text-muted small normal-link">
+                                <i class="glyphicon glyphicon-globe"></i>
+                                {{auction.shipping.available}}
+                    </span>
+            </h5>
+            <p>
+                <strong class="h5 text-primary">Description:</strong>
+                {{auction.detail.description}}
+            </p>
+            <p>
+                <strong class="h5 normal-link">Initial Price: </strong>
+                {{auction.auctionConfig.initialPrice+ ''}}
+            </p>
+            <p>
+                <strong class="h5 normal-link">
+                    Expiration:
+                </strong>
+                <span>{{auction.auctionConfig.endDate | date : 'MMM dd yyyy, hh: mm '}}</span>
+            </p>
+            <div>
+                <strong class="h5 theme-text">Leading Bidder:</strong>
+                <span ng-if="auction.auctionConfig.leading!==null && auction.auctionConfig.leading!==undefined">
+                    {{auction.auctionConfig.leading.price+ ' '+ auction.price.currency}}
+                </span>
+                <span  ng-if="auction.auctionConfig.leading===null || auction.auctionConfig.leading===undefined">
+                    <i>No one bid yet.</i>
+                </span>
+            </div>
+            <hr/>
+            <div class="payment-action">
+                <a ui-sref="dashboard.product.edit({id: auction._id})">
+                    <button class="btn btn-ghost reverse small">
+                        Edit
+                    </button>
+                </a>
+                <button class="btn btn-ghost reverse danger small" ng-click="removeAuction(auction)">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

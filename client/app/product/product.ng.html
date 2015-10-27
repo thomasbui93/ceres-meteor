@@ -1,0 +1,169 @@
+<div class="margin-top margin-bottom container">
+    <h4 ng-if="product===undefined">Your page is not found.</h4>
+    <div ng-if="product!==undefined" class="row product-present">
+        <div class="col-md-6 ">
+            <div class="product-img-container">
+                <div class="slider-container" ng-style="{'transform': 'translateX('+img.view*20*(-1)+'%)'}"
+                     ng-swipe-right="img.swipeRight()"
+                     ng-swipe-left="img.swipeLeft()"   >
+                    <div ng-repeat="img in product.image track by $index">
+                        <div class="img-wrapper">
+                            <img ng-src="{{img}}" class="img-responsive product-img">
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-thumbnail">
+                    <ul class="thumbnail-products">
+                        <li ng-repeat="image in product.image track by $index"
+                            ng-click="img.changeView($index)"
+                            ng-class="{'selected': img.view===$index}">
+                            <img ng-src="{{image}}" width="50" height="50" >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 product-info">
+            <span class="pull-right">
+            <h2 class="text-thin">{{product.price.currency+ product.price.main+ ' '+product.price.unit}}</h2>
+            </span>
+            <h3>{{product.name}}</h3>
+            <p class="text-muted small">{{category }}</p>
+            <h5 class="text-primary">{{product.producer.companyName}}</h5>
+            <h5 class="text-primary">
+                <i class="glyphicon glyphicon-globe"></i>
+                {{product.detail.origin}}
+            </h5>
+
+            <p>
+              <strong class="h5">Description: </strong>
+                {{product.detail.description}}
+            </p>
+
+            <p>
+                <strong class="h5">Stock available:</strong>
+                <span class="theme-text" ng-if="product.stock.infinite || product.stock.available!==0">Available</span>
+                <span class="text-danger" ng-if="product-stock.available===0">Not Available</span>
+            </p>
+            <p>
+                <strong class="h5">Available from: </strong>
+                {{product.createdTime | date: 'MMM dd, yyyy '}}
+            </p>
+            <p>
+                <strong class="h5">Shipping available:</strong>
+                {{product.shipping.available}}
+                <p class="theme-text small" ng-if="product.shipping.free"> Free Shipping</p>
+                <p class="text-danger small" ng-if="!product.shipping.free"> Not Free Shipping</p>
+            </p>
+            <p>
+                <span>
+                     <img src="/icon/liked.svg" ng-click="toggleUpVote()" class="votes" ng-class="{'active': product.vote === 1}">
+                    <span>{{product.votes.up}}</span>
+                </span>
+                <span>
+                    <img src="/icon/unliked.svg" ng-click="toggleDownVote()" class="votes" ng-class="{'active': product.vote === -1}">
+                     <span>{{product.votes.down}}</span>
+                </span>
+            </p>
+            <hr/>
+            <p class="text-thin h2 text-right">
+                {{product.price.currency+ product.price.main*input.purchase}}
+            </p>
+            <div class="row">
+                <div class="col-xs-6">
+                    <input type="number" class="flat-input" min="1" ng-model="input.purchase" ng-init="input.purchase=1">
+                </div>
+                <div class="col-sm-6" style="text-align: right">
+                    <button class="btn btn-hollow btn-warning" ui-sref="login.user"
+                            ng-if="currentUser=== null || currentUser===undefined">Log In to Purchase</button>
+                    <button class="btn btn-hollow" ng-click="purchaseProduct()" ng-if="!disablePurchase" ng-disabled="disablePurchase">
+                        Purchase
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-6 comment-section" >
+            <div class="comment-input media">
+                <div class="small-avatar media-left" ng-if="currentUser!==null">
+                    <img ng-src="{{currentUser.profile.avatar}}">
+                </div>
+                <div class="media-body" ng-if="currentUser!==null">
+                    <textarea class="flat" ng-model="input.msg" ng-keydown="captureKey($event)">
+
+                    </textarea>
+                </div>
+                <div class="comment-actions">
+                    <span ng-if="comments.length <2" class="text-primary">{{comments.length}} comment</span>
+                    <span ng-if="comments.length >=2" class="text-primary">{{comments.length}} comments</span>
+
+                    <span class="normal-link pull-right" ng-click="createComment()" style="cursor: pointer" ng-if="currentUser!==null">
+                        Reply
+                    </span>
+                    <span class="pull-right" ng-if="currentUser===null || currentUser === undefined">
+                        <a ui-sref="login.user" class="normal-link" >
+                            Login to comment...
+                        </a>
+                    </span>
+
+                </div>
+            </div>
+            <ul class="comment-list media-list">
+                <li ng-repeat="comment in comments" class="media comment-input">
+                    <div class="small-avatar media-left">
+                        <img ng-src="{{comment.owner.avatar}}">
+                    </div>
+                    <div class="media-body comment-main">
+                        <div class="theme-text text-firm comment-header">
+                            <span class="location text-thin text-muted small pull-right">
+                                <i class="glyphicon glyphicon-globe"></i>
+                                {{comment.owner.address.country}}
+                            </span>
+                            <span ng-if="comment.owner.status.client">{{comment.owner.firstName+ ' '+ comment.owner.lastName}}</span>
+                            <span ng-if="!comment.owner.status.client">{{comment.owner.companyName}}</span>
+                        </div>
+                        <div class="comment-body">
+                            <div contenteditable="{{comment.editable}}"
+                                 class="msg"
+                                 ng-model="comment.history[comment.history.length-1].msg"
+                                 ng-init="comment.editable=false">
+                            </div>
+                            <div class="comment-actions" >
+                                <span class="text-muted text-thin small">
+                                    <i class="glyphicon glyphicon-time"></i>
+                                    <span time-lapse ng-model="comment.history[comment.history.length-1].createdTime"></span>
+                                </span>
+                                <span class="normal-link pull-right small"
+                                      ng-click="removeComment(comment)"
+                                      ng-if="currentUser._id === comment.userId && comment.editable!==false">Delete</span>
+                                <span class="normal-link pull-right small"
+                                      ng-if="currentUser._id === comment.userId && comment.editable===false"
+                                      ng-click="edit(comment)">
+                                    Edit
+                                </span>
+                                <span class="normal-link pull-right small"
+                                      ng-if="currentUser._id === comment.userId && comment.editable!==false"
+                                      ng-click="cancel(comment)">
+                                    Cancel
+                                </span>
+                                <span class="normal-link pull-right small"
+                                      ng-if="currentUser._id === comment.userId && comment.editable!==false"
+                                      ng-click="update(comment)">
+                                    Save
+                                </span>
+                                <span class="normal-link pull-right small"
+                                      ng-if="comment.history.length>1 && comment.editable===false"
+                                      ng-click="showHistory(comment)"  >
+                                    Edited
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+</div>

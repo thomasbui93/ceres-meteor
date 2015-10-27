@@ -1,0 +1,79 @@
+<div class="account-form">
+    <div class="row">
+        <h6 ng-if="products.length===0" class="text-center">You currently do not own any products line.
+             <a ui-sref="dashboard.product.compose" class="normal-link">Create one</a></h6>
+    </div>
+    <div class="row" ng-if="products.length!==0">
+        <div class="col-md-12">
+            <div class="product-nav">
+                <button class="btn icon" ng-click="nav.back()">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </button>
+                <div class="nav-model">
+                    <input type="number" ng-model="nav.page" min="1" max="{{nav.total}}">
+                    <div>/{{nav.total}}</div>
+                </div>
+                <button class="btn icon" ng-click="nav.next()">
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="row auction-detail" ng-repeat="product in products track by product._id" >
+        <div class="col-md-4">
+            <div class="auction-image">
+                <img ng-src="{{product.image[0]}}">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h4>{{product.name}}</h4>
+            <p>
+                    <span class="location h5 text-muted small text-muted">
+                                <i class="glyphicon glyphicon-globe"></i>
+                                {{product.shipping.available}}
+                    </span>
+            </p>
+            <p>
+                <strong class="h5 normal-link">Description</strong>
+                {{product.detail.description}}
+            </p>
+            <div >
+                <strong class="text-firm h5 normal-link">Available:</strong>
+                    <span ng-if="!product.stock.infinite">
+                        {{::product.stock.available}}
+                    </span>
+                    <span ng-if="product.stock.infinite">
+                        1000 stocks left
+                    </span>
+            </div>
+            <div>
+                <strong class="text-firm h5 normal-link">Sold:</strong>
+                    <span>
+                        {{::product.stock.sold}} stock
+                    </span>
+            </div>
+            <div>
+                <strong class="text-firm h5 normal-link">Price:</strong>
+                {{product.price.main+' '+ product.price.currency}} per {{product.price.unit}}
+            </div>
+            <div>
+                <p>
+                    <input type="checkbox" id="{{product._id}}" ng-model="product.setAuction" ng-change="toggleAuction(product)"/>
+                    <label for="{{product._id}}"> <strong class="text-firm h5 theme-text">Auction</strong></label>
+                </p>
+            </div>
+            <hr>
+            <div class="payment-action">
+                <button class="btn btn-ghost reverse small" ng-click="toEdit(product._id)">
+                    Edit
+                </button>
+                <button class="btn btn-ghost reverse danger small" ng-click="invokeDelete(product._id)">
+                    Delete
+                </button>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<div id="menu-horizontal" scroll-fix="nav-expanded">
+    <div class="menu-logo">
+        <img src="/icon/icon2.svg" class="img-responsive"/>
+        <div>Ceres</div>
+    </div>
+    <ul class="menu-lg hidden-sm hidden-xs">
+        <li>
+            <a class="reveal-link" ui-sref="home" ui-sref-active="active">
+                <span data-hover="Home">Home</span>
+            </a>
+        </li>
+        <li >
+            <a class="reveal-link" ui-sref="explore" ng-class="{active: $state.includes('explore')}">
+                <span data-hover="Explore">Explore</span>
+            </a>
+        </li>
+        <li ng-if="$root.currentUser === null">
+            <a class="reveal-link" ui-sref="login.user" ng-class="{active: $state.includes('login')}">
+                <span data-hover="Login">Login</span>
+            </a>
+        </li>
+        <li ng-if="$root.currentUser !== null">
+            <a class="reveal-link" ng-click="logout()">
+                <span data-hover="Logout">Logout</span>
+            </a>
+        </li>
+        <li ng-if="$root.currentUser === null">
+            <a class="reveal-link" ui-sref="register.home" ng-class="{active: $state.includes('register')}">
+                <span data-hover="Register">Register</span>
+            </a>
+        </li>
+        <li class="noti-container">
+            <a class="reveal-link"  ui-sref="dashboard.home" ng-class="{active: $state.includes('dashboard')}">
+                <span data-hover="Dashboard">Dashboard</span>
+            </a>
+            <div class="notifications" ng-if="notifications!==0">
+                {{notifications}}
+            </div>
+        </li>
+        <li  >
+            <a class="reveal-link" ui-sref="bargain" ui-sref-active="active">
+                <span data-hover="Bargain">Bargain</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="menu-cover" class="hidden-lg" ng-class="{opened: menu.opened, closed: !menu.opened}" >
+
+</div>
+<div class="menu-control hidden-md hidden-lg"
+     ng-class="{opened: menu.opened}"
+     ng-click="menu.toggleOpen()">
+    <i class="glyphicon glyphicon-option-horizontal"></i>
+</div>
+<ul class="menu-vertical  hidden-md hidden-lg" ng-class="{opened: menu.opened, closed: !menu.opened}" >
+    <li ui-sref-active="active">
+        <a ui-sref="home"  ng-click="menu.dismiss($event)">
+            Home
+        </a>
+    </li>
+    <li ng-class="{active: $state.includes('explore')}">
+        <a ui-sref="explore"  ng-click="menu.dismiss($event)">
+            Explore
+        </a>
+    </li>
+    <li ng-if="$root.currentUser === null" ng-class="{active: $state.includes('login')}">
+        <a ui-sref="login.user"  ng-click="menu.dismiss($event)">
+            Login
+        </a>
+    </li>
+    <li ng-if="$root.currentUser !== null">
+        <a ng-click="logout(); menu.dismiss($event)">
+            Logout
+        </a>
+    </li>
+    <li ng-if="$root.currentUser === null" ng-class="{active: $state.includes('register')}">
+        <a ui-sref="register.home"  ng-click="menu.dismiss($event)">
+            Register
+        </a>
+    </li>
+    <li class="noti-container" ng-class="{active: $state.includes('dashboard')}" >
+        <a ui-sref="dashboard.home" ng-click="menu.dismiss($event)">
+            Dashboard
+        </a>
+        <div class="notifications" ng-if="notifications!==0">
+            {{notifications}}
+        </div>
+    </li>
+    <li ui-sref-active="active" >
+        <a ui-sref="bargain"  ng-click="menu.dismiss($event)">
+            Bargains
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,27 @@
+<div>
+    <div class="container margin-top">
+        <h4 class="text-thin text-center" ng-if="!isProvider">Welcome, {{currentUser.profile.firstName+" " + currentUser.profile.lastName}}</h4>
+        <h4 class="text-thin text-center" ng-if="isProvider">Welcome, {{currentUser.profile.companyName}}</h4>
+        <div class="col-md-3">
+            <ul class="menu-left dashboard" ng-show="!visibility.isProvider">
+                <li class="heading text-uppercase text-firm text-center">General</li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.home">Dashboard home</a></li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.payment.home">Payment Management</a></li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.account.home">Account Setting</a></li>
+            </ul>
+            <ul class="menu-left dashboard" ng-show="visibility.isProvider">
+                <li class="heading text-uppercase text-firm text-center">General</li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.home">Dashboard home</a></li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.bill.home">Payment Management</a></li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.providerProfile.home">Account Setting</a></li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.product.manage">Products</a></li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.product.auctions">Bargains</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div ui-view="dashboard" class="dashboard content velocity-enter-transition-slideRightIn" data-velocity-opts="{ stagger: 100 }">
+
+            </div>
+        </div>
+    </div>
+</div>

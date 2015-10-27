@@ -1,0 +1,61 @@
+<div>
+    <div class="header-portfolio">
+        <img src="/providers/blueberry.jpg">
+        <div class="content">
+            <div class="slogan text-white text-cursive fadeInUp">
+                Bring home the bracket of olive
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 2em; margin-bottom: 2em">
+        <div class="row">
+            <div class="col-md-4 fadeInUp-stagger">
+                <div class="portfolio-short ">
+                    <img src="/providers/berryLtd.jpg" class="img-circle">
+                    <div class="portfolio-name text-center">
+                        BerryLtd Company
+                    </div>
+                    <div class="portfolio-location theme-text text-center">
+                        Oulu, Finland
+                    </div>
+                    <div class="social-media">
+                        <div class="social-icon">
+                            <img src="/icon/fb.svg">
+                        </div>
+                        <div class="social-icon">
+                            <img src="/icon/twitter.svg">
+                        </div>
+                        <div class="social-icon">
+                            <img src="/icon/google.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 fadeInUp-stagger">
+                <div class="portfolio-information ">
+                    <ul class="toolbar">
+                        <li ui-sref-active="active">
+                            <a ui-sref="provider.information">
+                                <span>Information</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="provider.timeline">
+                                <span>Timeline</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="provider.product">
+                                <span>Products</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="information" ui-view="information">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

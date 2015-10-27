@@ -1,0 +1,185 @@
+@import "color";
+@import "function";
+.dashboard{
+  &.menu-left{
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: white;
+    padding: 1em;
+    color: #5b9bd1;
+    margin-bottom: 2em;
+    & li{
+      height: 3em;
+      line-height: 3em;
+      padding-left: 1em;
+      cursor: pointer;
+      &:hover, &.active{
+        background: #f2f6f9;
+      }
+      &.heading{
+        &:hover{
+          background: transparent;
+        }
+      }
+    }
+  }
+  &.content{
+    position: relative;
+    width: 100%;
+    padding: 1em;
+    background: white;
+  }
+}
+.payment{
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: $background;
+  padding: 1em;
+  margin-bottom: 1em;
+  &
+  & .normal-link{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    cursor: pointer;
+  }
+}
+.payment-action{
+  position: relative;
+  display: block;
+  text-align: right;
+  width: 100%;
+  height: 2em;
+  line-height: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.account-form{
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.product-information{
+  position: relative;
+  display: block;
+  padding: 1em;
+  width: 100%;
+}
+.product-short{
+  position: relative;
+  display: block;
+  background: transparentize($background, 0.5);
+  margin-bottom: 2em;
+  padding: 1em;
+  & img{
+    position: relative;
+    @include horizontal-center();
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
+.img-product{
+  position: relative;
+}
+.product-nav{
+  position: relative;
+  display: block;
+  width: auto;
+  float: right;
+  right: 0;
+  margin-bottom: 1em;
+  &> .nav-model{
+    position: relative;
+    display: inline-block;
+    height: 3em;
+    width: auto;
+    & input{
+      position: relative;
+      width: 5em;
+      padding: 1em;
+      border: none;
+      border-radius: 0;
+      height: 3em;
+      background-color: #f1f4f9;
+      -webkit-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      &:hover, &:focus{
+        outline: 0;
+      }
+    }
+    & div{
+      position: relative;
+      height: 3em;
+      display: inline-block;
+    }
+  }
+
+}
+.avatar{
+  position: relative;
+  & img{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    &.selected, &:hover{
+      border: 2px solid transparentize($danger, 0.5);
+    }
+  }
+  &.selected >img{
+    border: 2px solid transparentize($danger, 0.5);
+  }
+}
+.thumbnail-products{
+  position: relative;
+  margin: 30px;
+  background-color: $background;
+  & >li{
+    display: inline-block;
+    margin: 1em;
+    opacity: 0.5;
+    transition: opacity 0.5s, background-color 0.5s ease-in-out;
+    cursor: pointer;
+    padding: 1px;
+    background: transparent;
+    &.selected, &:hover{
+      opacity: 1;
+      background: $secondary;
+    }
+  }
+}
+img.center{
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+  position: relative;
+  @include horizontal-center();
+}
+.edit-box{
+  position: relative;
+  width: 100%;
+  min-height: 5em;
+  padding: 0.5em;
+  background-color: $background;
+}
+.auction-detail{
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 0.5em;
+  padding: 1em;
+  background-color: transparentize($background, 0.8);
+  & .auction-image{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    padding: 0.5em;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    & img{
+      position: relative;
+      min-width: 100%;
+      min-height: 100%;
+      @include center();
+    }
+  }
+}

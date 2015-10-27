@@ -1,0 +1,55 @@
+<div class="product-view container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="center-block">
+                <img ng-src="{{product.image}}" height="300" width="300">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>{{product.name}}</h2>
+            <a class="normal-link"> {{category}}</a>
+            <p>{{product.producer.companyName}}</p>
+            <p >
+                <strong class="h4 theme-text">Price: {{product.price.main + product.price.currency}}</strong>
+                <span>{{" per "+product.price.unit}}</span>
+            </p>
+            <p>
+                <strong class="h5">Original: </strong>
+                <span>{{product.detail.origin}}</span>
+            </p>
+            <p>
+                <strong class="h5">Description: </strong>
+                <span>{{product.detail.description}}</span>
+            </p>
+            <p>
+                <strong class="h5">This product is available in: </strong>
+                <span>{{product.shipping.available}}</span>
+            </p>
+            <p>
+                <strong class="h5">Free Shipping:</strong>
+                <span ng-if="product.shipping.free" class="theme-text">Yes</span>
+                <span ng-if="!product.shipping.free" class="text-danger"> No</span>
+            </p>
+            <p>
+                <strong class="h5">Availability:</strong>
+                <span ng-if="product.stock.infinite || product.stock.available > 0" class="theme-text">Yes</span>
+                <span ng-if="!product.stock.infinite && product.stock.available===0" class="text-danger"> No</span>
+            </p>
+            <div class="product-actions container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="number" min="0" ng-model="input.purchase">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <button class="btn btn-hollow" ui-sref="login.home" ng-if="disablePurchase">Log In to Purchase</button>
+                        <button class="btn btn-hollow" ng-click="purchaseProduct()" ng-if="!disablePurchase" ng-disabled="disablePurchase">
+                            Purchase
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

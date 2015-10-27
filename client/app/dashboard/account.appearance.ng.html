@@ -1,0 +1,50 @@
+<form name="nameForm" class="container account-form">
+    <a class="normal-link" ui-sref="dashboard.account.home">Back to Account Setting</a>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="avatar" style="margin: 1em">
+                <img ng-src="{{currentUser.profile.avatar}}" width="300" height="300" broken-reload>
+            </div>
+            <input type="file" class="input-file" ng-model="image" onchange="angular.element(this).scope().uploadAvatar(event)" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="flat input-field">
+                <label>First Name</label>
+                <input type="text" ng-model="currentUser.profile.firstName" placeholder="First Name" name="firstName"/>
+                <div ng-show="nameForm.$submitted || nameForm.firstName.$touched" class="velocity-opposites-transition-slideUpIn velocity-opposites-transition-slideDownOut">
+                    <p ng-show="nameForm.firstName.$error.required" class="text-danger ">
+                        Please tell use your first name
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="flat input-field">
+                <label>Last Name</label>
+                <input type="text" ng-model="currentUser.profile.lastName" placeholder="Last Name" name="lastName"/>
+                <div ng-show="nameForm.$submitted || nameForm.lastName.$touched" class="velocity-opposites-transition-slideUpIn">
+                    <p ng-show="nameForm.lastName.$error.required" class="text-danger">
+                        Please tell use your last name
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6" >
+            <div>
+                <strong style="padding-left: 1em">Birthday:   </strong> <span>{{currentUser.profile.birthday | date: 'MMM dd, yyyy'}}</span>
+            </div>
+            <div class="date-picker">
+                <datepicker ng-model="currentUser.profile.birthday" show-weeks="false" class="datepicker"  datepicker-options="{{datepicker.dateOptions}}"></datepicker>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 pull-right">
+            <button class="btn btn-hollow reverse pull-right margin-bottom" ng-click="changeName()">Change</button>
+        </div>
+    </div>
+</form>

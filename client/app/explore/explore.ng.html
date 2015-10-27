@@ -1,0 +1,55 @@
+<div>
+    <div class="header-search">
+        <img src="explore.jpg">
+        <div class="content">
+            <div class="search-box flat-input">
+                <input type="text" placeholder="Enter keywords"
+                       ng-model="input.search"
+                       />
+                <button ng-click="searchProducts()">Search</button>
+            </div>
+            <ul class="search-toolbar">
+                <li>Trending <i class="glyphicon glyphicon-triangle-bottom"></i></li>
+                <li>Newest <i class="glyphicon glyphicon-triangle-bottom"></i></li>
+                <li>Popular <i class="glyphicon glyphicon-triangle-bottom"></i></li>
+                <li>Price <i class="glyphicon glyphicon-triangle-bottom"></i></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container products-container">
+        <div class="row" style="padding: 3em">
+            <h3 ng-if="products.length===0">There is no product match your search. Try again!!</h3>
+            <div ng-repeat="product in products" class="col-md-4 velocity-enter-transition-slideRightIn"
+                 data-velocity-opts="{ stagger: 100 }">
+                <div class="product-card" >
+                    <img ng-src="{{product.image[0]}}" class="img-responsive">
+                    <div class="content">
+                        <div class="mask-img" ng-click="viewProduct(product)">
+                        </div>
+                        <div class="detail">
+                            <div class="product-title">{{product.name}} <span class="pull-right product-price">{{product.price.main| number:2}}{{ ''+product.price.currency+ '/'+ product.price.unit}}</span></div>
+                            <div class="product-brand">
+                                {{product.producer.companyName}}
+                                <div class="product-status pull-right">
+                                    {{product.shipping.available}}
+                                </div>
+                            </div>
+                            <div class="product-actions">
+                                <span>
+                                    <i class="glyphicon glyphicon-star" ng-class="{'active': product.vote===1}" ng-click="toggleUp(product)"></i>
+                                    {{product.votes.up}} likes
+                                </span>
+
+                                <span class="pull-right">
+                                    <i class="glyphicon glyphicon-shopping-cart active"></i>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

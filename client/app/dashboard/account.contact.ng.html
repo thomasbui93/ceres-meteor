@@ -1,0 +1,28 @@
+<form name="contactForm" class="container account-form">
+    <a class="normal-link" ui-sref="dashboard.account.home">Back to Account Setting</a>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="flat input-field">
+                <label>Address</label>
+                <input type="text" ng-model="currentUser.profile.address.main" placeholder="Address" name="address"/>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="flat input-field">
+                <label>ZIP</label>
+                <input type="text" ng-model="currentUser.profile.address.zip" placeholder="Zipcode" name="zip"/>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="flat input-field">
+                <label>Country</label>
+                <input type="text" ng-model="currentUser.profile.address.country" placeholder="Country" name="country"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 pull-right">
+            <button class="btn btn-hollow reverse pull-right margin-bottom" ng-click="changeContact()">Change</button>
+        </div>
+    </div>
+</form>

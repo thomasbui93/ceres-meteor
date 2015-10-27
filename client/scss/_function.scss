@@ -1,0 +1,33 @@
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -ms-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
+}
+@mixin transform($transform){
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
+}
+@mixin inline-list(){
+  list-style-type: none;
+  &> li{
+    position: relative;
+    display: inline-block;
+  }
+}
+@mixin vertical-center{
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+@mixin horizontal-center{
+  left: 50%;
+  @include transform(translateX(-50%));
+}
+@mixin center{
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}

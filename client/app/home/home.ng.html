@@ -1,0 +1,142 @@
+<div>
+    <header class="home">
+        <img src="/home.jpg">
+        <div class="main-content">
+            <div class="logo">
+                <img src="/icon/icon2.svg" class="img-responsive">
+                <div class="name text-center">CERES</div>
+                <div class="slogan text-center">We bring natural products to your home</div>
+            </div>
+            <div class="footer-header">
+                <img src="/icon/arrow-down.svg" class="img-responsive" ng-click="navigation.toAbout()">
+            </div>
+        </div>
+    </header>
+    <div class="full-width container" id="about" scroll-spy>
+        <h3 class="text-center text-uppercase big-text">Agriculture Products</h3>
+        <hr class="color small">
+        <div class="row">
+            <div class="col-md-3 margin-bottom" >
+                <div class="img-container" style="height: 250px">
+                    <img src="/farmer.jpg" class="img-responsive">
+                    <div class="img-title">Harmburg, Germany</div>
+                </div>
+                <h3 class="text-center text-uppercase">From the farm</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis debitis facilis inventore ipsa iure officia, quaerat quod tempore totam?</p>
+                <button class="btn btn-hollow center-block btn-icon">Find Providers
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </button>
+            </div>
+            <div class="col-md-3 margin-bottom">
+                <div class="img-container" style="height: 250px">
+                    <img src="/market.jpg" class="img-responsive">
+                    <div class="img-title">Brussel, Belgium</div>
+                </div>
+                <h3 class="text-center text-uppercase">Selective Production</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis debitis facilis inventore ipsa iure officia, quaerat quod tempore totam?</p>
+                <button class="btn btn-hollow center-block btn-icon">Explore Products
+                    <i class="glyphicon glyphicon-chevron-right"></i></button>
+            </div>
+            <div class="col-md-3 margin-bottom">
+                <div class="img-container" style="height: 250px">
+                    <img src="/select.jpg" class="img-responsive">
+                    <div class="img-title">Oulu, Finland</div>
+                </div>
+                <h3 class="text-center text-uppercase">Endorsed Product</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis debitis facilis inventore ipsa iure officia, quaerat quod tempore totam?</p>
+                <button class="btn btn-hollow center-block btn-icon">Browse Retailer
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </button>
+            </div>
+            <div class="col-md-3 margin-bottom">
+                <div class="img-container" style="height: 250px">
+                    <img src="/house-meal.jpg" class="img-responsive">
+                    <div class="img-title">Paris, France</div>
+                </div>
+                <h3 class="text-center text-uppercase">Natural Supply</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis debitis facilis inventore ipsa iure officia, quaerat quod tempore totam?</p>
+                <button class="btn btn-hollow center-block btn-icon">Testimonials
+                    <i class="glyphicon glyphicon-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="full-width" id="contact" scroll-spy ng-switch on="carousel.slider" style="overflow: hidden; height: 100vh">
+        <div class="fit-screen" ng-switch-when="0">
+            <img src="/slider1.jpg" class="img-responsive">
+            <div>
+                <div class="testimonial-container">
+                    <div class="testimonial">
+                        <div class="medium-text theme-text text-center">
+                            <img src="/icon/gecko2.svg"> Demeter Project
+                        </div>
+                        <div class="medium-text text-center">
+                            International poverty ending
+                        </div>
+                        <hr class="color small">
+                        <p class="text-center"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fit-screen" ng-switch-when="1">
+            <img src="/slider0.jpg" class="img-responsive">
+            <div>
+                <div class="testimonial-container">
+                    <div class="testimonial">
+                        <div class="medium-text theme-text text-center">
+                            <img src="/icon/gecko2.svg"> Ceres Project
+                        </div>
+                        <div class="medium-text text-center">
+                            Vietnam Germany Corp
+                        </div>
+                        <hr class="color small">
+                        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur debitis dolore eaque error eum laudantium molestiae officia sed sunt suscipit!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fit-screen" ng-switch-when="2">
+            <img src="/slider2.jpg" class="img-responsive">
+            <div>
+                <div class="testimonial-container">
+                    <div class="testimonial">
+                        <div class="medium-text theme-text text-center">
+                            <img src="/icon/gecko2.svg"> Gecko Project
+                        </div>
+                        <div class="medium-text text-center">
+                            Vegan Trading
+                        </div>
+                        <hr class="color small">
+                        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur debitis dolore eaque error eum laudantium molestiae officia sed sunt suscipit!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fit-screen" ng-switch-when="3">
+            <img src="/slider3.jpg" class="img-responsive">
+            <div>
+                <div class="testimonial-container">
+                    <div class="testimonial">
+                        <div class="medium-text theme-text text-center">
+                            <img src="/icon/gecko2.svg"> Amazon Project
+                        </div>
+                        <div class="medium-text text-center">
+                            American Natural Importing
+                        </div>
+                        <hr class="color small">
+                        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur debitis dolore eaque error eum laudantium molestiae officia sed sunt suscipit!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- navigation slider
+            -->
+        <div class="nav-right" ng-click="carousel.moveRight()">
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </div>
+        <div class="nav-left" ng-click="carousel.moveLeft()">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,111 @@
+<div class="margin-top margin-bottom container">
+    <h4 ng-if="product===undefined">Your page is not found.</h4>
+    <div ng-if="product!==undefined" class="row product-present">
+        <div class="col-md-6">
+            <div class="countdown-container">
+                <div countdown-ui="product.auctionConfig.endDate">
+                </div>
+            </div>
+            <div class="product-img-container">
+                <div class="slider-container" ng-style="{'transform': 'translateX('+img.view*20*(-1)+'%)'}"
+                     ng-swipe-right="img.swipeRight()"
+                     ng-swipe-left="img.swipeLeft()"   >
+                    <div ng-repeat="img in product.image track by $index">
+                        <div class="img-wrapper">
+                            <img ng-src="{{img}}" class="img-responsive product-img">
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-thumbnail">
+                    <ul class="thumbnail-products">
+                        <li ng-repeat="image in product.image track by $index"
+                            ng-click="img.changeView($index)"
+                            ng-class="{'selected': img.view===$index}">
+                            <img ng-src="{{image}}" width="50" height="50" >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="product-info">
+                <span class="pull-right">
+            <h2 class="text-thin">{{product.price.currency+ product.price.main+ ' '+product.price.unit}}</h2>
+            </span>
+                <h3>{{product.name}}</h3>
+                <p class="text-muted small">{{category }}</p>
+                <h5 class="text-primary">{{product.producer.companyName}}</h5>
+                <h5 class="text-primary">
+                    <i class="glyphicon glyphicon-globe"></i>
+                    {{product.detail.origin}}
+                </h5>
+
+                <p>
+                    <strong class="h5">Description: </strong>
+                    {{product.detail.description}}
+                </p>
+
+                <p>
+                    <strong class="h5">Stock available:</strong>
+                    <span class="theme-text" ng-if="product.stock.infinite || product.stock.available!==0">Available</span>
+                    <span class="text-danger" ng-if="product-stock.available===0">Not Available</span>
+                </p>
+                <p>
+                    <strong class="h5">Available from: </strong>
+                    {{product.createdTime | date: 'MMM dd, yyyy '}}
+                </p>
+                <p>
+                    <strong class="h5">Shipping available:</strong>
+                    {{product.shipping.available}}
+                <p class="theme-text small" ng-if="product.shipping.free"> Free Shipping</p>
+                <p class="text-danger small" ng-if="!product.shipping.free"> Not Free Shipping</p>
+                </p>
+                <hr/>
+                <p class="text-thin" style="text-align: right">
+                    <span class="h2 text-thin theme-text">{{highestBid.price + ' '+product.price.currency}}</span>
+                    <strong class="h4 pull-left">Highest: </strong>
+                </p>
+            </div>
+            <div class="bidding-section">
+                <div class="bidding-box media" ng-if="enableBidding">
+                    <div class=" media-body">
+                        <input type="text" ng-model="input.bid">
+                    </div>
+                    <div class="media-right">
+                        <button class="btn auction-btn" ng-click="createBid()">
+                            BID</button>
+                    </div>
+
+                </div>
+                <ul class="comment-list media-list">
+                    <li class="media comment-input" ng-repeat="bid in bids">
+                        <div class="small-avatar media-left">
+                            <img ng-src="{{bid.owner.avatar}}">
+                        </div>
+                        <div class="media-body comment-main">
+                            <div class="theme-text text-firm comment-header">
+                            <span class="location text-thin text-muted small pull-right">
+                                <i class="glyphicon glyphicon-globe"></i>
+                                {{bid.owner.address.country}}
+                            </span>
+                                <span ng-if="bid.owner.status.client">{{bid.owner.firstName+ ' '+ comment.owner.lastName}}</span>
+                                <span ng-if="!bid.owner.status.client">{{bid.owner.companyName}}</span>
+                            </div>
+                            <div class="comment-body">
+                                <h4 class="text-thin">{{bid.price+ ' '+ product.price.currency}}
+                                </h4>
+                                <div class="comment-actions" >
+                                <span class="text-muted text-thin small">
+                                    <i class="glyphicon glyphicon-time"></i>
+                                    <span ng-model="bid.createdTime" time-lapse></span>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

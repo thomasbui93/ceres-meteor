@@ -1,0 +1,16 @@
+<div>
+    <div class="container margin-top">
+        <div class="col-md-3">
+            <ul class="menu-left dashboard">
+                <li class="heading text-uppercase text-firm text-center">General</li>
+                <li ui-sref-active="active"><a ui-sref="admin.block">Block list</a></li>
+                <li ui-sref-active="active"><a ui-sref="admin.verify">Verify</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div ui-view="admin" class="dashboard content">
+
+            </div>
+        </div>
+    </div>
+</div>

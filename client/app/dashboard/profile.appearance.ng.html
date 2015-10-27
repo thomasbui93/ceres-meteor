@@ -1,0 +1,63 @@
+<form name="nameForm" class="container account-form">
+    <a class="normal-link" ui-sref="dashboard.providerProfile.home">Back to Account Setting</a>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="avatar" style="margin: 1em">
+                <img ng-src="{{currentUser.profile.avatar}}" width="300" height="300" broken-reload>
+            </div>
+            <input type="file" class="input-file" ng-model="image" onchange="angular.element(this).scope().uploadAvatar(event)" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="flat input-field">
+                <label>Company Name</label>
+                <input type="text" ng-model="currentUser.profile.companyName" placeholder="Company Name" name="companyName"/>
+                <div ng-show="nameForm.$submitted || nameForm.companyName.$touched" class="velocity-opposites-transition-slideUpIn velocity-opposites-transition-slideDownOut">
+                    <p ng-show="nameForm.companyName.$error.required" class="text-danger ">
+                        Please tell use your company name
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="flat input-field">
+                <label>Short Biography</label>
+                <textarea ng-model="currentUser.profile.bioShort" placeholder="Short Biography" name="shortBio" rows="3"></textarea>
+                <div ng-show="nameForm.$submitted || nameForm.bioShort.$touched" class="velocity-opposites-transition-slideUpIn velocity-opposites-transition-slideDownOut">
+                    <p ng-show="nameForm.bioShort.$error.required" class="text-danger ">
+                        Please tell something about your company.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6" >
+            <div>
+                <strong style="padding-left: 1em">Founded:   </strong> <span>{{currentUser.profile.birthday | date: 'MMM dd, yyyy'}}</span>
+            </div>
+            <div class="date-picker">
+                <datepicker ng-model="currentUser.profile.birthday" show-weeks="false" class="datepicker"  datepicker-options="{{datepicker.dateOptions}}"></datepicker>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="flat input-field">
+                <label>Type</label>
+                <select ng-options="type.short for type in types" ng-model="currentUser.profile.type">
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="flat input-field">
+                <label>Category</label>
+                <input type="text" ng-model="currentUser.profile.category" placeholder="Categories"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 pull-right">
+            <button class="btn btn-hollow reverse pull-right margin-bottom" ng-click="changeAppearance()">Change</button>
+        </div>
+    </div>
+</form>

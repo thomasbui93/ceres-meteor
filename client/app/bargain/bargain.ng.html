@@ -1,0 +1,50 @@
+<div>
+    <header class="bargain-header">
+        <img src="bargain.jpg">
+        <ul class="toolbar">
+            <li>Your Interests</li>
+            <li>Hot Bargains</li>
+
+        </ul>
+    </header>
+    <div class="container margin-top" >
+        <div class="row">
+            <div class="col-md-6" ng-repeat="auction in auctions">
+                <div class="bargain-short center-block">
+                    <div class="bargain-information">
+                        <h3 class="theme-text">{{auction.name}}</h3>
+                        <h5 class="text-primary">{{auction.producer.companyName}}</h5>
+                        <h5 class="text-primary">
+                            <i class="glyphicon glyphicon-globe"></i>
+                            {{auction.detail.origin}}
+                        </h5>
+                        <p>
+                            {{auction.detail.description}}
+                        </p>
+                        <h4>Initial Price: {{auction.auctionConfig.initialPrice + ' '+ auction.price.currency}}</h4>
+                    </div>
+                    <div class="bargain-img container">
+                        <div class="row">
+                            <div class="col-sm-4" ng-repeat="img in auction.image">
+                                <img ng-src="{{img}}" class="img-responsive" >
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="action-group">
+                        <a class="text-firm theme-text text-uppercase pull-right" ui-sref="auction({id: auction._id})">Auction</a>
+                        <h3 class="text-thin theme-text text-uppercase"
+                            ng-if="auction.auctionConfig.leading!==null && auction.auctionConfig.leading!==undefined">
+                            {{auction.auctionConfig.leading.price + ' '+ auction.price.currency}}
+                        </h3>
+                        <h3 class="text-thin theme-text text-uppercase"
+                            ng-if="auction.auctionConfig.leading ===null || auction.auctionConfig.leading===undefined">
+                            {{auction.auctionConfig.initialPrice + ' '+ auction.price.currency}}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

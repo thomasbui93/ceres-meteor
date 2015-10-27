@@ -1,0 +1,10 @@
+@import "color";
+@import "function";
+.card{
+  position: relative;
+  background: white;
+  max-width: 300px;
+  @include horizontal-center();
+  padding: 1em;
+  margin-bottom: 1em;
+}

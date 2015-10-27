@@ -1,0 +1,46 @@
+@import "function";
+@import "color";
+.normal-link{
+  color: #30abd5;
+  cursor: pointer;
+}
+.reveal-link{
+  position: relative;
+  overflow: hidden;
+  height: 1em;
+  cursor: pointer;
+  & span{
+    position: relative;
+    display: inline-block;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+    &:hover{
+      -webkit-transform: translateY(-100%);
+      -moz-transform: translateY(-100%);
+      transform: translateY(-100%);
+    }
+    &.current{
+      -webkit-transform: translateY(-100%);
+      -moz-transform: translateY(-100%);
+      transform: translateY(-100%);
+    }
+    &:before{
+      position: absolute;
+      color: $theme;
+      top: 100%;
+      content: attr(data-hover);
+      font-weight: 700;
+      -webkit-transform: translate3d(0,0,0);
+      -moz-transform: translate3d(0,0,0);
+      transform: translate3d(0,0,0);
+    }
+  }
+  &.active{
+    & span{
+      -webkit-transform: translateY(-100%);
+      -moz-transform: translateY(-100%);
+      transform: translateY(-100%);
+    }
+  }
+}

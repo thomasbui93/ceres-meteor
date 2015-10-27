@@ -1,0 +1,92 @@
+@import "../color";
+@import "../function";
+.btn{
+  &:focus, &:active{
+    outline: 0;
+  }
+  &.btn-hollow{
+    border-radius: 0;
+    padding: 12px 18px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: $theme;
+    border: 1px solid $theme;
+    background: transparent;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    &.small{
+      padding: 6px 12px;
+    }
+    &.reverse{
+      border-color: $theme;
+      color: white;
+      background-color: $theme;
+    }
+    &.reverse.danger{
+      border-color: $danger;
+      color: white;
+      background-color: $danger;
+    }
+    &.btn-warning{
+      border-color: $warning;
+      color: white;
+      background-color: $warning;
+      &:hover{
+        color: white;
+        background-color: $warning;
+      }
+    }
+    &[disabled]{
+      border-color: grey;
+      color: grey;
+      &:hover{
+        background: grey;
+        color: white;
+      }
+    }
+  }
+  &:hover{
+    border-color: $theme;
+    color: white;
+    background-color: $theme;
+  }
+}
+
+.btn{
+  &.btn-icon{
+    overflow-x: hidden;
+    & > i{
+      @include transition(transform, 0.2s, ease);
+      @include transform(translateX(4em));
+    }
+    &:hover i{
+      @include transform(translateX(0));
+    }
+  }
+  &.icon{
+    overflow: hidden;
+    width: 2em;
+    height: 2em;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: $theme;
+    border: 1px solid $theme;
+    background: transparent;
+    padding: 0;
+    transition: all 0.5s ease-in-out;
+    &:hover{
+      border-color: $theme;
+      color: white;
+      background-color: $theme;
+    }
+    &:disabled{
+      color: grey;
+      border-color: grey;
+    }
+  }
+
+}

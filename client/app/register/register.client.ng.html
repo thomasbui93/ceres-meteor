@@ -1,0 +1,125 @@
+<div>
+    <h4 class="text-center">Client Registration</h4>
+    <form class="container register-container" name="clientForm" novalidate ng-submit="signUp()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="flat input-field">
+                    <label>First Name</label>
+                    <input type="text" ng-model="user.firstName" placeholder="First Name" name="firstName"/>
+                    <div ng-show="clientForm.$submitted || clientForm.firstName.$touched" class="velocity-opposites-transition-slideUpIn velocity-opposites-transition-slideDownOut">
+                        <p ng-show="clientForm.firstName.$error.required" class="text-danger ">
+                            Please tell use your first name
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="flat input-field">
+                    <label>Last Name</label>
+                    <input type="text" ng-model="user.lastName" placeholder="Last Name" name="lastName"/>
+                    <div ng-show="clientForm.$submitted || clientForm.lastName.$touched" class="velocity-opposites-transition-slideUpIn">
+                        <p ng-show="clientForm.lastName.$error.required" class="text-danger">
+                            Please tell use your last name
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="flat input-field">
+                    <label>Email</label>
+                    <input type="text" ng-model="user.email" placeholder="Enter your email" name="email" email-exist/>
+                    <div ng-show="clientForm.$submitted || clientForm.email.$touched">
+                        <p ng-show="clientForm.email.$error.required" class="text-danger">
+                            Please tell use your email.
+                        </p>
+                        <p ng-show="clientForm.email.$error.emailExist" class="text-danger">
+                            The email is already existed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="flat input-field">
+                    <label>Company</label>
+                    <input type="text" ng-model="user.company" placeholder="Your company"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="flat input-field">
+                    <label>Password</label>
+                    <input type="password" ng-model="user.password" placeholder="Enter your password" name="password" ng-minlength="8" required/>
+                    <div ng-show="clientForm.$submitted || clientForm.password.$touched" class="velocity-opposites-transition-slideUpIn">
+                        <p ng-show="clientForm.password.$error.required" class="text-danger">
+                            Please enter the password.
+                        </p>
+                        <p ng-show="clientForm.password.$error.minlength" class="text-danger">
+                            The password should have at least 8 characters.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="flat input-field">
+                    <label>Retype Password</label>
+                    <input type="password" ng-model="user.repwd" placeholder="Re-enter your password" name="rePassword" required ng-model-options="{updateOn: 'blur'}" compare-to="user.password"/>
+                    <div ng-show="clientForm.$submitted || clientForm.rePassword.$touched" class="velocity-opposites-transition-slideUpIn">
+                        <p ng-show="clientForm.rePassword.$error.compareTo" class="text-danger">
+                            Password does not match.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="flat input-field">
+                    <label>Address</label>
+                    <input type="text" ng-model="user.address.main" placeholder="Address" name="address"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="flat input-field">
+                    <label>ZIP</label>
+                    <input type="text" ng-model="user.address.zip" placeholder="Zipcode" name="zip"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="flat input-field">
+                    <label>Country</label>
+                    <input type="text" ng-model="user.address.country" placeholder="Country" name="country"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6" >
+                <div>
+                    <strong style="padding-left: 1em">Birthday:   </strong> <span>{{user.birthday | date: 'MMM dd, yyyy'}}</span>
+                </div>
+                <div>
+
+                </div>
+                <div class="date-picker">
+                    <datepicker ng-model="user.birthday" show-weeks="false" class="datepicker"  datepicker-options="{{datepicker.dateOptions}}"></datepicker>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="flat input-field">
+                    <label>Interest</label>
+                    <input type="text" ng-model="user.interest" placeholder="Your interest"/>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-hollow reverse pull-right margin-bottom" ng-click="signUp()" type="submit">Sign up</button>
+            </div>
+        </div>
+    </form>
+</div>

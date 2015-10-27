@@ -1,0 +1,15 @@
+@import "../color";
+.btn{
+  &.btn-circle{
+    border: none;
+    border-radius: 100%;
+    width: 37px;
+    height: 37px;
+    line-height: 37px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: white;
+    background-color: $secondary;
+  }
+}

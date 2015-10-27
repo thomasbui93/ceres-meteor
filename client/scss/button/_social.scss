@@ -1,0 +1,16 @@
+@import "../color";
+@import "../function";
+.social-icon{
+  position: relative;
+  height: 3em;
+  width: 3em;
+  display: block;
+  background-color: $theme;
+  border-radius: 100%;
+  & img{
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    @include center();
+  }
+}

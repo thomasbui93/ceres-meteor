@@ -1,0 +1,45 @@
+<h5 ng-if="payments.length===0"> You don't have any bill currently.</h5>
+<div class="payment container" ng-repeat="payment in payments" >
+
+    <div class="row">
+        <div class="col-md-5">
+            <img ng-src="{{payment.productDetail.image[0]}}" width="250" height="300">
+        </div>
+        <div class="col-md-7">
+            <h4 class="theme-text">{{payment.productDetail.name}}</h4>
+            <h4>{{payment.owner.companyName}}</h4>
+            <h4 class="theme-text">Amount: {{payment.unit}}</h4>
+            <p>
+                <strong class="h5">Price: {{payment.unit*payment.productDetail.price.main + " "+payment.productDetail.price.currency}}</strong>
+            </p>
+            <p>
+                <strong class="h5">Origin: </strong><span>{{payment.productDetail.detail.origin}}</span>
+            </p>
+            <p>
+                <strong class="h5">Details: </strong>{{payment.productDetail.detail.description}}
+            </p>
+            <p>
+                <strong class="h5">Paid: </strong>
+                <span ng-if="!payment.status.paid">Unconfirmed</span>
+                <span ng-if="payment.status.paid">Confirmed</span>
+            </p>
+            <p>
+                <strong>Payment Status:</strong>
+                <span ng-if="!payment.status.inProgress">Have not initialized</span>
+                <span ng-if="payment.status.inProgress && !payment.status.done">In progress</span>
+                <span ng-if="payment.status.done">Done</span>
+            </p>
+            <div class="normal-link" ng-click="archive(payment)">Archive</div>
+        </div>
+    </div>
+    <hr >
+    <div class="payment-action">
+        <button class="btn btn-hollow reverse small">
+            Pay
+        </button>
+        <button class="btn btn-hollow reverse danger small" ng-click="cancel(payment)">
+            Cancel
+        </button>
+    </div>
+
+</div>

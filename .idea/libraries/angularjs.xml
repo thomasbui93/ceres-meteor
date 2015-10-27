@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="angularjs" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/.meteor/local/build/programs/web.browser/packages/angular_angular.js" />
+        <item url="file://$PROJECT_DIR$/.meteor/local/build/programs/web.browser/packages/urigo_angular.js" />
+        <item url="file://$PROJECT_DIR$/.meteor/local/build/programs/web.browser/packages/angular_angular-animate.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/.meteor/local/build/programs/web.browser/packages/angular_angular.js" />
+      <root url="file://$PROJECT_DIR$/.meteor/local/build/programs/web.browser/packages/urigo_angular.js" />
+      <root url="file://$PROJECT_DIR$/.meteor/local/build/programs/web.browser/packages/angular_angular-animate.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
